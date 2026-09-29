@@ -1,0 +1,6 @@
+09-29 18:32:41.218  8421  8421 F DEBUG : pid: 8421, tid: 8421, name: programme
+09-29 18:32:41.219  8421  8421 F DEBUG : signal 11 (SIGSEGV)
+09-29 18:32:41.219  8421  8421 F DEBUG : Cause: null pointer dereference
+09-29 18:32:41.220  8421  8421 F DEBUG : backtrace:
+09-29 18:32:41.220  8421  8421 F DEBUG : #00 pc 0000000000001234 /data/app/programme
+09-29 18:32:41.220  8421  8421 F DEBUG : #01 pc 0000000000001180 /data/app/programme
