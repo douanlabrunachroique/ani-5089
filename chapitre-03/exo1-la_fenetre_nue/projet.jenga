@@ -1,0 +1,11 @@
+from Jenga import *
+
+with workspace("FenetreNue"):
+    configurations(["Debug", "Release"])
+
+    with project("FenetreNue"):
+        windowedapp()
+        language("C++")
+        cppdialect("C++17")
+        location(".")
+        files(["main.cpp"])
