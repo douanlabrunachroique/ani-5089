@@ -1,0 +1,6 @@
+souris : 18
+touche : 12
+molette : 7
+entrée_sortie : 4
+redimensionnement : 3
+perte_focus : 1
