@@ -1,0 +1,10 @@
+Apres l'arret de la souris, avant.txt montre que la valeur 9 0 reste affichee image
+apres image (images 5 a 10) au lieu de retomber a 0 0. Le moteur ecrase le mouvement
+et ne le remet jamais a zero : la tete continue de tourner alors que la main est
+posee. Dans apres.txt, la meme image 5 donne 0 0, car l'accumulateur est remis a
+zero a chaque image, meme quand rien n'a bouge.
+
+Quand je bouge vite, plusieurs evenements arrivent entre deux images et le moteur
+defectueux n'en garde que le dernier. A l'image 2, avant.txt donne 15 -2 alors que
+apres.txt donne 31 -5 : les mouvements precedents etaient perdus. La tete tourne donc
+moins que la main avec le defaut, et pas avec la correction.
