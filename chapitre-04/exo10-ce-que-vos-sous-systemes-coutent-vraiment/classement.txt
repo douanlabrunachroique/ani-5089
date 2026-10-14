@@ -1,0 +1,7 @@
+1. illumination_globale : +2500 µs
+2. ombres_dynamiques : +1800 µs
+3. reflections : +1300 µs
+4. ambient_occlusion : +950 µs
+5. particules : +700 µs
+6. brouillard : +450 µs
+7. anti_aliasing : +300 µs
