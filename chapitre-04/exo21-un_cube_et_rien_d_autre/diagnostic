@@ -1,0 +1,14 @@
+Lignes :
+NkMeshHandle meshCube = renderer->GetMeshSystem()->GetCube();
+const NkVec3f centre{pos.x + dx / longueur * DISTANCE, pos.y + dy / longueur * DISTANCE,
+pos.z + dz / longueur * DISTANCE};
+NkDrawCall3D d;
+d.mesh = meshCube;
+d.transform = NkMat4f::Translate(centre) * NkMat4f::Scale(taille);
+d.tint = {1.f, 1.f, 1.f};
+d.aabb.min = {centre.x - taille.x * 0.5f, centre.y - taille.y * 0.5f, centre.z - taille.z * 0.5f};
+d.aabb.max = {centre.x + taille.x * 0.5f, centre.y + taille.y * 0.5f, centre.z + taille.z * 0.5f};
+r3d->Submit(d);
+
+Cause :
+Boîte englobante non renseignée : le champ aabb du NkDrawCall3D. J'ai provoqué cette cause exprès en mettant PROVOQUER_CAUSE à 1, ce qui retire les deux lignes d.aabb.min et d.aabb.max. Le renderer décide de ce qui est dans le champ d'après cette boîte, pas d'après le maillage : sans elle, l'objet est écarté en silence. Submit ne refuse rien et n'affiche rien, donc la fenêtre reste vide (fond seul) alors que la lumière, la caméra, l'échelle et le sous-système NK_SS_RENDER3D sont corrects. Après essai : écran vide avec PROVOQUER_CAUSE à 1, cube visible avec 0. 
