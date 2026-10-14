@@ -1,0 +1,5 @@
+Constat : Lorsque la face avant de la porte est exactement dans le même plan que la face intérieure du mur, les deux surfaces peuvent se superposer dans l'image et produire des artefacts visuels, notamment un scintillement.
+
+Nom : Ce défaut s'appelle le z-fighting. Il apparaît lorsque deux surfaces sont très proches ou coplanaires et que le tampon de profondeur ne permet pas de déterminer de manière stable laquelle doit être affichée.
+
+Réglage : J'avance les panneaux de 0,01 m, soit 1 cm, vers l'intérieur de la pièce. Ce décalage sépare suffisamment les surfaces pour éviter leur concurrence dans le rendu, tout en maintenant les panneaux près des murs. Un décalage plus faible pourrait laisser persister les artefacts ; un décalage excessif ferait trop ressortir les panneaux.
