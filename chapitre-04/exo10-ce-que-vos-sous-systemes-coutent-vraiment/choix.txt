@@ -1,3 +1,0 @@
-Je garde : anti_aliasing, brouillard
-
-Pourquoi : L'anti-aliasing améliore la qualité des contours pour un coût supplémentaire relativement faible. Le brouillard apporte une ambiance visuelle intéressante tout en ayant un coût modéré. Ces deux sous-systèmes offrent un compromis intéressant entre qualité visuelle et performances.
