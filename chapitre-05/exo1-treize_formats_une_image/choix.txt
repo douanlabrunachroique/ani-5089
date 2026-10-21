@@ -1,0 +1,11 @@
+Mon format pour un mur :
+
+Je choisirais le format PNG si sa taille mesurée reste raisonnable. Il conserve les détails de la photographie sans introduire les pertes de qualité caractéristiques du JPEG. Pour une texture de mur, il est important de garder les irrégularités, les fissures et les variations de couleur. Si le JPEG est nettement plus léger et que les détails restent suffisamment visibles, il peut être préférable pour réduire l'espace disque.
+
+Pourquoi :
+
+Le choix dépend des tailles réellement mesurées dans formats.txt. Le BMP est généralement volumineux, tandis que le PNG peut réduire la taille sans perte de qualité. Le JPEG peut produire un fichier encore plus léger, mais sa compression avec perte modifie certaines informations de l'image. Pour une texture répétée sur un mur, je privilégierais le bon compromis entre taille du fichier et fidélité visuelle.
+
+Ce qui m'a surpris :
+
+J'ai été surpris de constater que plusieurs formats peuvent conserver exactement les mêmes dimensions tout en ayant des tailles différentes sur le disque. Les dimensions indiquent le nombre de pixels, mais pas la quantité de données nécessaire pour stocker le fichier compressé. J'ai également compris qu'un fichier créé avec succès n'est pas forcément relisible par le moteur : il faut donc vérifier le résultat en le rechargeant.
