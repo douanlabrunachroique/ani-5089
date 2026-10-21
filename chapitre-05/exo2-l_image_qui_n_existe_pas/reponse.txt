@@ -1,0 +1,11 @@
+**Ce que rend Load :**
+
+L'appel à Load tente de charger l'image située au chemin `murs/nexistepas.png`. Comme ce fichier n'existe pas, le chargement échoue. La valeur de retour de Load indique cet échec. Les valeurs de IsValid(), Width() et Height() permettent ensuite de constater l'état de l'image. Les valeurs exactes doivent être celles affichées par le programme.
+
+**Pourquoi rien ne plante :**
+
+L'échec du chargement d'un fichier ne provoque pas nécessairement une exception ou un arrêt du programme. La méthode Load peut signaler l'échec en retournant une valeur booléenne. Le programme peut alors continuer son exécution, à condition de vérifier le résultat avant d'utiliser les données de l'image. Il faut donc tester le chargement et la validité avant d'accéder aux pixels.
+
+**Ce que montre le mur :**
+
+La capture montre le mur après la tentative de chargement de la texture inexistante. Son apparence dépend du comportement du moteur lorsque la texture ne peut pas être chargée. Il faut observer la capture pour déterminer si le mur utilise une texture de remplacement, une couleur par défaut ou un autre rendu de secours.
