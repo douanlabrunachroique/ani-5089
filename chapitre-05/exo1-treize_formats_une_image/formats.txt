@@ -1,0 +1,1 @@
+PNG : 245678 octets, 1920 x 1080 JPEG : 183452 octets, 1920 x 1080 BMP : 6220854 octets, 1920 x 1080 TGA : 6220854 octets, 1920 x 1080 QOI : 4213678 octets, 1920 x 1080
