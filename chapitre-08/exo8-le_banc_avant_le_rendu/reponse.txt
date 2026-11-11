@@ -1,0 +1,7 @@
+Ce que le banc refuse :
+
+Le banc refuse trois situations incorrectes. Premièrement, il refuse un deuxième emprunt lorsqu'une image est déjà empruntée. Deuxièmement, il refuse un rendu lorsqu'aucune image n'a été empruntée. Enfin, il refuse la création d'une chaîne dont la taille dépasse le maximum autorisé de trois images. Ces refus permettent de garantir que les opérations respectent les règles de fonctionnement de l'anneau.
+
+Pourquoi un simulateur permissif serait pire :
+
+Un simulateur permissif accepterait des opérations incorrectes et pourrait produire des résultats incohérents. Par exemple, un double emprunt pourrait remplacer l'image déjà empruntée, tandis qu'un rendu sans emprunt pourrait faire avancer inutilement l'anneau. Cela rendrait les erreurs difficiles à détecter et fausserait les résultats de la simulation. Il est donc préférable que la chaîne refuse les opérations invalides plutôt que de les accepter silencieusement.
