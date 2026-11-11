@@ -1,6 +1,0 @@
-Detruire la chaine gauche.
-Detruire la chaine droite.
-Recreer la chaine gauche avec les nouvelles dimensions.
-Recreer la chaine droite avec les nouvelles dimensions.
-Enregistrer les nouvelles images de la chaine gauche.
-Enregistrer les nouvelles images de la chaine droite.
