@@ -1,0 +1,44 @@
+PILE D'APPELS — THREAD PRINCIPAL (MAIN THREAD)
+
+Exercice : exo9-le_figement_provoque_puis_leve
+Etat observe : application figée pendant le rendu vers une cible hors écran.
+Configuration : fenêtre plus grande que la cible hors écran.
+
+THREAD 1 — Main Thread — [En attente / bloqué]
+
+> ntdll.dll!NtWaitForSingleObject()
+  KERNELBASE.dll!WaitForSingleObjectEx()
+  KERNELBASE.dll!WaitForSingleObject()
+  [module graphique]!WaitForGpuCompletion()
+  [module graphique]!CommandQueue::WaitForFence()
+  [module graphique]!CommandQueue::SubmitAndWait()
+  [module renderer]!Renderer::EndFrame()
+  [module renderer]!Renderer::RenderFrame()
+  [module renderer]!Renderer::Draw()
+  [application]!Application::Render()
+  [application]!Application::Run()
+  [application]!main()
+
+LECTURE DE LA PILE
+
+Le thread principal est arrivé dans le chemin de rendu et attend
+la fin d'une opération graphique (attente de synchronisation GPU).
+
+Il ne revient pas à la boucle principale de l'application.
+La fenêtre paraît donc figée.
+
+Dans le scénario de l'exercice, la cible hors écran est plus petite
+que la fenêtre. Le renderer conserve initialement la taille de la
+fenêtre au lieu d'utiliser la taille réelle de la cible.
+
+Cette incohérence peut provoquer un blocage pendant l'exécution
+ou la synchronisation du rendu, sans qu'un message applicatif
+soit nécessairement journalisé.
+
+CORRECTION À VÉRIFIER DANS cible.cpp
+
+Après avoir défini la cible couleur finale, définir également
+la taille de rendu sur les dimensions exactes de cette cible :
+
+    rendu->SetFinalColorTarget(poigneeDeLaCible);
+    rendu->SetRenderSizeOverride(largeurCible, hauteurCible);
