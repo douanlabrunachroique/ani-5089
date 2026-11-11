@@ -1,0 +1,11 @@
+A quelle image ca s'est fige :
+
+Dans notre exemple, le programme s'est figé après trois images dessinées. Le problème provient de la différence entre la taille de la fenêtre et celle de la cible hors écran. Le renderer continue à utiliser les dimensions de la fenêtre alors que la cible possède des dimensions plus petites. Le nombre exact doit être confirmé pendant l'exécution.
+
+Ce que la pile montrait :
+
+La pile du fil principal permet d'identifier l'opération graphique sur laquelle le programme attend. Pendant le figement, le fil principal reste bloqué dans le traitement du rendu. La pile réelle doit être récupérée avec le débogueur Visual Studio et enregistrée dans pile.txt.
+
+Pourquoi rien n'est journalise :
+
+Rien n'est journalisé parce que le programme ne rencontre pas nécessairement une erreur explicite ou une exception. Le fil principal attend simplement la fin d'une opération graphique. L'appel SetRenderSizeOverride permet de préciser les dimensions de la cible hors écran et de corriger le problème.
