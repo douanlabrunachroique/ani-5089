@@ -1,0 +1,8 @@
+what happens on the edge:
+Quand on attache l'objet sur le front montant (en testant current et changed ensemble), l'objet n'est attache a la main que pendant l'unique trame ou la commande de saisie vient d'etre pressee. Des l'image suivante, bien que le joueur continue a presser fermement la gachette, le champ changed repasse a faux. Ne voyant plus la condition remplie, le code abandonne le maintien : l'objet se detache aussitot de la paume et tombe au sol par gravite. La prehension est donc instantanement rompue.
+
+what happens on the level:
+Quand on maintient l'objet sur le niveau (en testant current seul), la condition reste verifiee et vraie a chaque trame consecutive tant que le joueur garde son doigt appuye sur la gachette. L'objet reste ainsi parfaitement solidaire de la pose de la paume (GRIP_POSE) de la main droite au cours de tous ses deplacements dans l'espace virtuel, ce qui correspond exactement au comportement physique et immersif recherche en realite virtuelle.
+
+what I test to let go:
+Pour detecter le moment exact du relachement volontaire par le joueur, je teste le front descendant de l'action, c'est-a-dire changed == true et current == false (tout en s'assurant que l'action est toujours active, active == true). Ce test garantit que l'ouverture de la main est bien une action deliberee survenue a cet instant precis, permettant de liberer l'objet et de lui transferer la vitesse instantanee de la main pour le lancer.

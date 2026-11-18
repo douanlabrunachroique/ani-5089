@@ -1,0 +1,8 @@
+what the program believed:
+Le programme croyait naivement que le joueur venait d'ouvrir volontairement la main et de relacher la gachette pour lacher l'objet. En effet, lors de la deconnexion ou de l'extinction de la manette, le gestionnaire OpenXR force automatiquement la valeur du champ courant a 0 (faux). Comme le code d'origine ne regardait que le champ courant sans se soucier de l'etat materiel, il a traite ce passage a zero exactement comme un relachement normal du bouton, declenchant la chute immediate de l'objet au sol.
+
+what was really happening:
+En realite, le joueur n'avait jamais relache sa prise : il tenait toujours sa manette en main avec le doigt replie sur la commande, mais le peripherique physique s'est eteint suite a une coupure d'alimentation, une mise en veille automatique d'economie d'energie ou une perte de signal radio. Absolument rien dans la seule valeur de courant ne permettait de distinguer ces deux situations distinctes : un bouton physiquement relache et une manette completement deconnectee produisent tous les deux un courant egal a faux. Seul le champ actif differenciait les deux cas en passant a 0 lors de l'extinction.
+
+what I test now:
+Je teste desormais explicitement le champ actif avant d'autoriser tout relachement : l'objet n'est libere que si actif est vrai ET que l'on observe un front reel de relachement (changed == true et courant == false). Si actif est faux, le programme sait que la manette est eteinte ; j'ai choisi de maintenir l'objet fige a sa derniere pose connue plutot que de le laisser tomber. Ce choix protege l'utilisateur contre la perte frustrante d'un objet en plein jeu lors d'une micro-coupure de manette, tout en assurant une reprise transparente des que le peripherique se reconnecte.
