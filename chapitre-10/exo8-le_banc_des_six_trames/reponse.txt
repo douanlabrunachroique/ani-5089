@@ -1,0 +1,5 @@
+Pourquoi la trame 5 reprend sur l'image 2 :
+L'anneau de quatre images n'avance que lorsqu'on dessine réellement. Aux trames 3 et 4, le programme ne soumet aucune couche : l'index reste figé à sa valeur d'avant. La trame 2 avait dessiné avec l'image d'index 1, puis avancé l'index à 2. Les trames 3 et 4 passent sans rien dessiner, l'index reste à 2. La trame 5 reprend donc là où la trame 2 s'était arrêtée, et dessine sur l'image 2.
+
+Pourquoi on finit une trame sans rien dessiner :
+La fin de trame n'est pas liée au dessin. Elle appartient à la boucle, pas au bloc de rendu. Même quand le casque est posé et que shouldRender est faux, le simulateur a quand même alloué et attendu cette trame. Ne pas appeler la fin de trame laisserait la boucle bloquée indéfiniment en attente de la trame suivante. On appelle donc toujours la fin de trame, que l'on ait soumis des couches ou non.

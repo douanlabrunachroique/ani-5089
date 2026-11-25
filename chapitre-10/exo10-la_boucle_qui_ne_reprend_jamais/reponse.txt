@@ -1,0 +1,8 @@
+Ou la boucle s'est arretee :
+La boucle s'est arretee a la trame 6, au moment ou le casque a ete pose. Quand shouldRender est faux, la fin de trame etait placee a l'interieur du bloc conditionnel. Elle n'a donc pas ete appelee. Le simulateur attendait la fin de la trame courante avant d'en commencer une nouvelle : cette attente n'a jamais ete satisfaite. La boucle est restee bloquee indefiniment sur la trame 6.
+
+Pourquoi aucun message n'est apparu :
+Sauter un appel de fin de trame ne produit aucune erreur, aucun avertissement, aucune exception. Le simulateur ne dit rien : il attend en silence. L'ecran reste fige sur la derniere image rendue. Aucun log ne signale la faute parce que personne n'a encore demande la trame suivante, et la machine n'a aucun moyen de distinguer une attente normale d'un blocage.
+
+Ce que je fais maintenant a chaque trame :
+J'appelle toujours la fin de trame, que je dessine ou non. Le test sur shouldRender ne concerne que le rendu et la soumission des couches. La fin de trame est un appel incondititionnel, place apres le bloc de rendu, jamais a l'interieur. Ainsi, meme quand le casque est pose, la boucle avance normalement et reste prete a reprendre des que le casque est remis.

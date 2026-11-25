@@ -1,0 +1,8 @@
+Ce que la couche dit vraiment :
+La couche soumet la pose avec laquelle les matrices de vue ont ete calculees au moment du rendu. Le compositeur l'utilise pour savoir ou regardait le joueur quand l'image a ete dessinee.
+
+Ce que le compositeur en fait :
+Il compare la pose soumise avec la pose actuelle de la tete au moment de la composition. La difference entre les deux lui donne le mouvement a corriger. Il applique une transformation geometrique sur la couche pour compenser ce decalage : c'est la reprojection.
+
+Pourquoi la pose fraiche ne corrige rien :
+Si on soumet la pose fraiche au lieu de la pose du rendu, le compositeur calcule une correction nulle (ou fausse) : il croit que la tete n'a pas bouge depuis le rendu. La reprojection ne compense pas le vrai mouvement. L'image reste decalee de la quantite dont la tete a bouge pendant le rendu, soit environ un degre et demi par trame a soixante-douze trames par seconde. Sur dix minutes, l'accumulation est perceptible et provoque une gêne visuelle.
