@@ -1,10 +1,9 @@
+
 #include <iostream>
-#include <string>
 
 int main() {
     int images, n;
-    std::string tag;
-    std::cin >> tag >> images >> n;
+    std::cin >> images >> n;
     int idx = 0;
     int rendues = 0;
     for (int i = 1; i <= n; i++) {
